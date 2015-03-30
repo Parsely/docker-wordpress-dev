@@ -1,31 +1,35 @@
-tutum-docker-wordpress
-======================
+docker-wordpress-dev
+====================
 
-Out-of-the-box Wordpress docker image
+Out-of-the-box Wordpress docker image for
+[Parse.ly plugin](https://github.com/Parsely/wp-parsely) development.
 
 
 Usage
 -----
 
-To create the image `tutum/wordpress`, execute the following command on the tutum-docker-wordpress folder:
+To create the image `parsely/wordpress-dev`, execute the following command in
+the docker-wordpress-dev folder:
 
-	docker build -t tutum/wordpress .
+	docker build -t parsely/wordpress-dev .
 
 You can now push your new image to the registry:
 
-	docker push tutum/wordpress
+	docker push parsely/wordpress-dev
 
 
 Running your Wordpress docker image
 -----------------------------------
 
-Start your image:
+Start your image (you may need to replace `$HOME/repos/parsely/wp-parsely` with
+the path to where you have cloned the
+[Parse.ly WP plugin](https://github.com/Parsely/wp-parsely):
 
-	docker run -d -p 80:80 tutum/wordpress
+	docker run -d -v $HOME/repos/parsely/wp-parsely:/app/wp-content/plugins/wp-parsely -p 8080:80 parsely/wordpress-dev
 
 Test your deployment:
 
-	curl http://localhost/
+	curl http://localhost:8080/
 
 You can now start configuring your Wordpress container!
 

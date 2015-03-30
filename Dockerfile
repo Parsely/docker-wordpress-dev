@@ -1,5 +1,5 @@
 FROM tutum/lamp:latest
-MAINTAINER Fernando Mayo <fernando@tutum.co>, Feng Honglin <hfeng@tutum.co>
+MAINTAINER Fernando Mayo <fernando@tutum.co>, Feng Honglin <hfeng@tutum.co>, Dan Blanchard <dan@parsely.com>
 
 # Install plugins
 RUN apt-get update && \
@@ -20,7 +20,6 @@ ADD create_mysql_admin_user.sh /create_mysql_admin_user.sh
 ADD create_db.sh /create_db.sh
 ADD patch_apache_config.sh /patch_apache_config.sh
 RUN chmod +x /*.sh
-
 
 EXPOSE 80 3306
 CMD ["/run.sh"]
